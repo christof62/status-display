@@ -1,3 +1,6 @@
+#ifndef _HMI_H_
+#define _HMI_H_
+
 #include <FreeRTOS.h>
 #include <Adafruit_GFX.h>
 
@@ -64,3 +67,4 @@ class ScreenManager {
 
 extern ScreenManager screenManager;
 
+#endif
