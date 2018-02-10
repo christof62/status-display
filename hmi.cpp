@@ -244,13 +244,15 @@ class MainScreen: public Screen {
       
       // Bus timetable
       gfx.drawBitmap (5, R1_Y+15, bus64, 64, 64, EPD_BLACK);
-      uint16_t* busTimeTable = getBusTimeTable();
+      struct Schedule* busTimeTable = getBusTimeTable();
       gfx.setFont(&FreeSans18pt7b);
       gfx.setCursor(75, R1_Y+42);
-      snprintf(buffer, 20, "%02d:%02d - %02d:%02d  %d", busTimeTable[0]/60, busTimeTable[0]%60, busTimeTable[1]/60, busTimeTable[1]%60, busTimeTable[2]);
+      snprintf(buffer, 20, "%02d:%02d - %02d:%02d  %d", busTimeTable[0].departure/60, busTimeTable[0].departure%60, 
+        busTimeTable[0].arrival/60, busTimeTable[0].arrival%60, busTimeTable[0].line);
       gfx.print(buffer);      
       gfx.setCursor(75, R1_Y+75);
-      snprintf(buffer, 20, "%02d:%02d - %02d:%02d  %d", busTimeTable[3]/60, busTimeTable[3]%60, busTimeTable[4]/60, busTimeTable[4]%60, busTimeTable[5]);
+      snprintf(buffer, 20, "%02d:%02d - %02d:%02d  %d", busTimeTable[1].departure/60, busTimeTable[1].departure%60, 
+        busTimeTable[1].arrival/60, busTimeTable[1].arrival%60, busTimeTable[1].line);
       gfx.print(buffer);        
            
       // window state

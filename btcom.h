@@ -17,15 +17,23 @@
 
 #include <BLEDevice.h>
 
+enum class Room  {LIVINGROOM, DININGROOM, KITCHEN, BEDROOM, BATHROOM_GF, CORRIDOR_GF, BATHROOM_UF, CORRIDOR_UF, SVENJA, ROBIN, LAST};
+
 enum GarbageType {ORGANIC, RESIDUAL, PAPER, PLASTIC, UNDEFINED};
 struct Garbage {
   enum GarbageType type;
   uint8_t days;
 };
 
+struct Schedule {
+  uint16_t departure;
+  uint16_t arrival;
+  uint8_t line;
+};
+
 
 struct Garbage getNextGarbageCollection();
-uint16_t* getBusTimeTable();
+struct Schedule* getBusTimeTable();
 float getTemperature();
 uint8_t getHumidity();
 float getOutdoorTemperature();
@@ -35,7 +43,7 @@ void writePartyMode(uint8_t hour, uint8_t minute);
 bool partyModeWritten();
 void writeHomeMode(boolean home);
 bool homeModeWritten();
-void writeAudioMode(boolean home);
+void writeAudioMode(boolean on);
 bool audioModeWritten();
 void BLEscan(void);
 void connect();

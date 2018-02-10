@@ -64,8 +64,8 @@ RTC_DATA_ATTR float temperature;
 RTC_DATA_ATTR uint8_t humidity;
 RTC_DATA_ATTR float outdoorTemperature;
 RTC_DATA_ATTR uint8_t outdoorHumidity;
-RTC_DATA_ATTR uint8_t windows[10];
-RTC_DATA_ATTR uint16_t busTimeTable[9];
+RTC_DATA_ATTR uint8_t windows[(int)Room::LAST];
+RTC_DATA_ATTR struct Schedule busTimeTable[3];
 RTC_DATA_ATTR struct Garbage nextGarbageCollection = {GarbageType::UNDEFINED, 255};
 
 /**
@@ -150,7 +150,7 @@ uint8_t* getWindows(){
  * 
  * @return uint16_t* 
  */
-uint16_t* getBusTimeTable(){
+struct Schedule* getBusTimeTable(){
   return busTimeTable;
 }
 
@@ -345,11 +345,11 @@ bool connectToServer(BLEAddress pAddress) {
   pWindowCharacteristic = getCharacteristic(windowUUID);
   if (pWindowCharacteristic != nullptr){
     std::string value = pWindowCharacteristic->readValue();
-    memcpy (windows, value.c_str(), 10);
+    memcpy (windows, value.c_str(), (int)Room::LAST);
     screenManager.triggerEvent(Event::WINDOW);
   }
 
-  if (hour() == 0 || nextGarbageCollection.days == 255){        // sync @ midnight or if not synced before
+  if (hour() == 0 || nextGarbageCollection.type == GarbageType::UNDEFINED){        // sync @ midnight or if not synced before
     pGarbageCharacteristic = getCharacteristic(garbageUUID);
     if (pGarbageCharacteristic != nullptr){
       std::string value = pGarbageCharacteristic->readValue();
@@ -362,7 +362,7 @@ bool connectToServer(BLEAddress pAddress) {
   pBusCharacteristic = getCharacteristic(busUUID);
   if (pBusCharacteristic != nullptr){
     std::string value = pBusCharacteristic->readValue();
-    memcpy(busTimeTable, value.c_str(), 12);
+    memcpy(busTimeTable, value.c_str(), 3*sizeof(struct Schedule));
   }  
 
   Serial.print(" - Data received ");
