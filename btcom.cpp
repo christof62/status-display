@@ -1,6 +1,6 @@
 /**
  * @file btcom.cpp
- * @author Christof Menzenbach
+ * @authors Christof Menzenbach, https://github.com/nkolban/ESP32_BLE_Arduino/blob/master/examples/BLE_client/BLE_client.ino
  * @date 9 Feb 2018
  * @brief BLE communication with home environment service.
  *
