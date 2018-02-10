@@ -1,3 +1,12 @@
+/**
+ * @file hmi.cpp
+ * @author Christof Menzenbach
+ * @date 9 Feb 2018
+ * @brief 4.2" Softkey based HMI of status display.
+ *
+ * A central ScreenManager manages different screens with event handlers.
+ */
+
 #include <TimeLib.h>
 #include <epd4in2.h>
 #include <Adafruit_GFX.h>

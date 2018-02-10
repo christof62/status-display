@@ -1,3 +1,13 @@
+/**
+ * @file BLE_Display4in2.ino
+ * @author Christof Menzenbach
+ * @date 9 Feb 2018
+ * @brief 4.2" e-ink display with softkey HMI
+ *
+ * - Initialization
+ * - Handling of deep sleep and wakeup every minute for time update
+ */
+
 #include <Arduino.h>
 #include <TimeLib.h>
 #include <time.h>
@@ -49,7 +59,7 @@ void setup(){
   if (((bootCount % commIntervalls[hour()]) == 0) || (year() < 2016) || wakeupReason == ESP_DEEP_SLEEP_WAKEUP_TOUCHPAD){ 
     if(wakeupReason == ESP_DEEP_SLEEP_WAKEUP_TOUCHPAD){
       sleepTimeout = 2*60*1000;
-      // get GPOI which caused wakeup and stimulat statemachine
+      // get GPOI which caused wakeup and stimulate event loop
       switch(touchPin)
       {
         case 6: touchL.inject(); break;

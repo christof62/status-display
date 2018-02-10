@@ -1,3 +1,11 @@
+/**
+ * @file configuration.h
+ * @author Christof Menzenbach
+ * @date 9 Feb 2018
+ * @brief Configuration of touch inputs, touch thresholds and communication interval.
+ *
+ */
+ 
 #ifndef _CONFIGURATION_H_
 #define _CONFIGURATION_H_
 

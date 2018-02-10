@@ -1,3 +1,11 @@
+/**
+ * @file hmi.h
+ * @author Christof Menzenbach
+ * @date 9 Feb 2018
+ * @brief Header with event definition.
+ *
+ */
+
 #ifndef _HMI_H_
 #define _HMI_H_
 

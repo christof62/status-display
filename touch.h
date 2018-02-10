@@ -1,3 +1,13 @@
+/**
+ * @file touch.h
+ * @author Christof Menzenbach
+ * @date 9 Feb 2018
+ * @brief Driver for touch buttons.
+ *
+ * - Debouncing 
+ * - Event notification
+ */
+
 #ifndef _BUTTON_H_
 #define _BUTTON_H_
 

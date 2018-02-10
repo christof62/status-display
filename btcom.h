@@ -1,3 +1,17 @@
+/**
+ * @file btcom.h
+ * @author Christof Menzenbach
+ * @date 9 Feb 2018
+ * @brief BLE communication with home environment service.
+ *
+ * - Time syncronization 
+ * - Livingroom temperature and humidity
+ * - Outdoor temperature and humidity
+ * - Window opening status
+ * - Next garbage collection
+ * - Bus time schedule
+ */
+ 
 #ifndef _BTCOM_H_
 #define _BTCOM_H_
 

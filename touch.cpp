@@ -1,3 +1,13 @@
+/**
+ * @file touch.cpp
+ * @author Christof Menzenbach
+ * @date 9 Feb 2018
+ * @brief Driver for touch buttons.
+ *
+ * - Debouncing 
+ * - Event notification
+ */
+ 
 #include "touch.h"
 
 /**
