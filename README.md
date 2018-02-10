@@ -1,4 +1,4 @@
-# status-display
+# E-ink status-display
 A battery powered e-ink  device to show in this case the status of a home automation server. 
 
 The device is based on a LOLIN 32 board.
