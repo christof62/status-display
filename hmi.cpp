@@ -261,7 +261,7 @@ class MainScreen: public Screen {
       int i = 0;
       uint8_t* windows = getWindows();
       gfx.setFont(&FreeSans12pt7b);
-      for (int room=(int)Room::LIVINGROOM; room<(int)Room::LAST; room++){
+      for (uint8_t room=(uint8_t)Room::LIVINGROOM; room<(uint8_t)Room::LAST; room++){
         uint8_t window = windows[(int)room]&0x03;
         if (window == 1 || window == 2){
           open = true;
@@ -667,11 +667,11 @@ void Screen::drawSoftkeys(){
 /**
  * @brief Draw a single softkey.
  * 
- * @param pos Index of softkey starting with 0 for left softkey.
+ * @param index Index of softkey starting with 0 for left softkey.
  * @param bmp Softkey icon.
  */
-void Screen::drawSoftkey(uint8_t pos, const unsigned char* bmp){
-  gfx.drawBitmap (30+103*pos, R2_Y+(R3_Y-R2_Y)/2-16, bmp, 32, 32, EPD_WHITE);
+void Screen::drawSoftkey(uint8_t index, const unsigned char* bmp){
+  gfx.drawBitmap (30+103*index, R2_Y+(R3_Y-R2_Y)/2-16, bmp, 32, 32, EPD_WHITE);
 }
 
 /**

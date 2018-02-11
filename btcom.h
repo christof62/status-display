@@ -17,7 +17,7 @@
 
 #include <BLEDevice.h>
 
-enum class Room  {LIVINGROOM, DININGROOM, KITCHEN, BEDROOM, BATHROOM_GF, CORRIDOR_GF, BATHROOM_UF, CORRIDOR_UF, SVENJA, ROBIN, LAST};
+enum class Room : uint8_t  {LIVINGROOM, DININGROOM, KITCHEN, BEDROOM, BATHROOM_GF, CORRIDOR_GF, BATHROOM_UF, CORRIDOR_UF, SVENJA, ROBIN, LAST};
 
 enum GarbageType {ORGANIC, RESIDUAL, PAPER, PLASTIC, UNDEFINED};
 struct Garbage {
@@ -25,12 +25,13 @@ struct Garbage {
   uint8_t days;
 };
 
+enum Transport : uint16_t {BUS, TRAM, UNDERGROUND, TAXI, LIGHT_RAIL, TRAIN};
+
 struct Schedule {
   uint16_t departure;
   uint16_t arrival;
-  uint8_t line;
+  struct {uint16_t line:13; enum Transport type:3;};
 };
-
 
 struct Garbage getNextGarbageCollection();
 struct Schedule* getBusTimeTable();
